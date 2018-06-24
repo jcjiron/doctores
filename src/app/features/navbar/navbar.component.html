@@ -1,0 +1,29 @@
+
+
+<nav>
+  <!-- Dropdown Structure -->
+  <ul id='dropdown1' class='dropdown-content'>
+    <li><a [routerLink]="['/analytics']">Gráficas</a></li>
+    <li><a [routerLink]="['/register']">Mis datos</a></li>
+    <li class="divider"></li>
+    <li><a (click)="logout()">Salir</a></li>
+  </ul>
+  <nav>
+    <div class="nav-wrapper">
+      <a  [routerLink]="['/home']"class="brand-logo">Doctores MX</a>
+      <ul class="right hide-on-med-and-down">
+        <li *ngIf="afAuth.user | async as user; else showLogin">
+          <a
+          materialize="dropdown"
+          data-activates='dropdown1'
+          class="dropdown-trigger"> {{ user.displayName }}
+          <i class="material-icons right">arrow_drop_down</i>
+        </a>
+      </li>
+      <ng-template #showLogin>
+        <li><a class="btn btn-doctor" [routerLink]="['/login']">Soy doctor</a></li>
+      </ng-template>
+    </ul>
+  </div>
+</nav>
+</nav>

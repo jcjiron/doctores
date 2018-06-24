@@ -1,0 +1,8 @@
+$roboto-font-path: "~materialize-css/dist/fonts/roboto/";
+@import "~materialize-css/sass/materialize";
+@import "variables";
+
+.btn-doctor{
+  background: white;
+  color: $primary-color;
+}
