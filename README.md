@@ -1,6 +1,23 @@
 # Doctores
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.1.
+
+## Installation
+Run `npm install` to install the dependecies.
+
+## Collaboration
+```
+feature(affected-module): new best or feature.
+```
+```
+style(affected-module): style aspects.
+```
+```
+refactor(affected-module)`: refactor component or app.
+```
+```
+fix(affected-module): to fix an issue.
+```
 
 ## Development server
 
