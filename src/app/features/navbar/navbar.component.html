@@ -15,6 +15,7 @@
         <li *ngIf="afAuth.user | async as user; else showLogin">
           <a
           materialize="dropdown"
+          [materializeActions]="dropdownActions"
           data-activates='dropdown1'
           class="dropdown-trigger"> {{ user.displayName }}
           <i class="material-icons right">arrow_drop_down</i>

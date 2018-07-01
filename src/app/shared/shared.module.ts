@@ -1,3 +1,4 @@
+import { MaterializeModule } from 'angular2-materialize';
 import { FormsModule } from '@angular/forms';
 
 
@@ -12,6 +13,7 @@ import { GraphComponent } from './components/graph/graph.component';
 
 @NgModule({
   imports: [
+    MaterializeModule,
     CommonModule,
     RouterModule,
     ChartsModule,
@@ -21,6 +23,7 @@ import { GraphComponent } from './components/graph/graph.component';
     GraphComponent
   ],
   exports :[
+    MaterializeModule,
     ChartsModule,
     GraphComponent,
     FormsModule,

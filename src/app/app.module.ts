@@ -1,9 +1,8 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-
-import { ThemeModule } from './theme/theme.module';
 import {CoreModule} from './core/core.module';
 import {FeaturesModule} from './features/features.module';
 
@@ -16,7 +15,6 @@ import { SHARED_ROUTES } from './features/features.routes';
   ],
   imports: [
     BrowserModule,
-    ThemeModule,
     CoreModule,
     FeaturesModule,
     SHARED_ROUTES,
