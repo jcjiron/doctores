@@ -29,8 +29,7 @@ export class FirebaseService {
   }
 
   public getDoctorByEmail(email:string){
-    return this.db.collection('doctors', ref => ref.where('email', '==', email).limit(1))
-      .valueChanges();
+    return this.db.collection('doctors', ref => ref.where('email', '==', email).limit(1)).valueChanges();
 
   }
 

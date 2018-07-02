@@ -5,6 +5,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { auth, User } from 'firebase/app';
 import { LocalStorageService } from '../../shared/services/local-storage.service';
 import { Subscription } from 'rxjs';
+import { FirebaseService } from '../../core/firebase.service';
 
 
 @Component({
@@ -24,16 +25,35 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   constructor(public afAuth: AngularFireAuth,
     public localStorageService: LocalStorageService,
+    public fs: FirebaseService,
     public router: Router) { }
 
     ngOnInit() {
 
       let subs = this.localStorageService.watchStorage()
       .subscribe((key=>{
-        this.user = this.localStorageService.getItem(key) !== null ? JSON.parse(this.localStorageService.getItem(key)) : null;
-        this.router.navigate(['/analytics']);
+
+        this.user = this.localStorageService.getItem(key) !== null
+        ? JSON.parse(this.localStorageService.getItem(key))
+        : null;
+
+        if (this.user !== null) {
+        this.getUserInfo(this.user );
+      }
 
       }));
+    }
+
+    getUserInfo(user){
+        this.fs.getDoctorByEmail(user.email)
+          .subscribe((data: any[])=>{
+            if (data.length === 0) {
+              this.router.navigate(['/register']);
+            }else{
+              this.router.navigate(['/analytics']);
+            }
+          });
+
     }
 
     logout() {

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // routes
 import { SHARED_ROUTES } from './features.routes';
@@ -24,6 +25,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     CommonModule,
     SharedModule,
     SHARED_ROUTES,
+    FormsModule,
+    ReactiveFormsModule,
     NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=AIzaSyB3W0r0yD8POEJYhMuaq-k-MxEs7t4rIwE'})
 
 
