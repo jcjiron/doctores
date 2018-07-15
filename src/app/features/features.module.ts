@@ -8,6 +8,7 @@ import { SHARED_ROUTES } from './features.routes';
 // modules
 import {SharedModule} from '../shared/shared.module';
 import { NguiMapModule} from '@ngui/map';
+import { ThemeModule } from '../theme/theme.module';
 
 // components
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -27,6 +28,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     SHARED_ROUTES,
     FormsModule,
     ReactiveFormsModule,
+    ThemeModule,
     NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=AIzaSyB3W0r0yD8POEJYhMuaq-k-MxEs7t4rIwE'})
 
 

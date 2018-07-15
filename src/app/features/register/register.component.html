@@ -1,43 +1,48 @@
 
 <br>
 <div class="row">
-  <form [formGroup]="doctorForm" class="col s6 offset-s3">
+  <form materialize [formGroup]="doctorForm" class="col s6 offset-s3">
     <div class="row">
       <div class="input-field col s12">
-        <input  formControlName="name" name="name" id="name" type="text" class="validate">
-        <label for="name">Nombre completo</label>
+        <input  formControlName="name" name="name" id="name" type="text" >
+        <!-- <small class="form-text text-muted danger"
+               *ngIf="!userForm.get('email').valid && (userForm.get('email').dirty || userForm.get('email').touched)">
+          {{ 'v_email_format' | translate }}
+        </small> -->
+        <label for="name" >Nombre completo</label>
       </div>
       <div class="input-field col s6">
-        <input  formControlName="email" id="email" name="email" type="email" class="validate" disabled>
-        <label for="email">Correo</label>
+        <input  formControlName="email" id="email" name="email" type="email" >
+        <label for="email" >Correo</label>
 
       </div>
       <div class="input-field col s6">
-        <input  formControlName="phone" name="phone"  id="phone" type="text" class="validate">
-        <label for="phone">Teléfono</label>
+        <input  formControlName="phone" name="phone"  id="phone" type="number" >
+        <label for="phone">Teléfono (10 dígitos)</label>
       </div>
     </div>
     <div class="row">
       <div class="input-field col s6">
-        <input  formControlName="certificate" name="certificate" id="certificate" type="text" class="validate">
+        <input  formControlName="certificate" name="certificate" id="certificate" type="text" >
         <label for="certificate">Cédula</label>
       </div>
       <div class="input-field col s6">
-        <select  formControlName="speciality" name="specility" id="speciality" name="speciality" materialize="material_select" [materializeSelectOptions]="specilities">
-          <option *ngFor="let specilitie of specilities" [value]="specilitie" >{{specilitie}}</option>
+        <select  (change)="change($event)" formControlName="specialty" name="specialty" id="specialty" name="specialty" materialize="material_select" [materializeSelectOptions]="specialties">
+          <option disabled>Escoge una</option>
+          <option *ngFor="let specialty of specialties" [value]="specialty" >{{specialty}}</option>
         </select>
-        <label for="speciality">Especialidad</label>
+        <label for="specialty">Especialidad</label>
       </div>
     </div>
     <div class="row">
       <div class="input-field col s12">
-        <input formControlName="address" name="address" id="address" type="text" class="validate">
+        <input formControlName="address" name="address" id="address" type="text" >
         <label for="address">Dirección</label>
       </div>
 
     </div>
     <div class="row">
-      <a (click)="sendForm()" class="waves-effect waves-light btn col s6 offset-s3">Completar registro</a>
+      <button (click)="sendForm()" class="waves-effect waves-light btn col s6 offset-s3" [disabled]="doctorForm.invalid">Completar registro</button>
     </div>
   </form>
 </div>

@@ -1,7 +1,6 @@
 
 export interface Doctor{
-  firstNae:string,
-  lastName:string,
+  name:string,
   email:string,
   phone:string,
   certificate:string,

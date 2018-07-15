@@ -62,7 +62,7 @@ export class HttpService {
 
       getUrl = `${urlService}/${id}`;
 
-    return this.http.get(this.api + getUrl).;
+    return this.http.get(this.api + getUrl);
   }
 
 

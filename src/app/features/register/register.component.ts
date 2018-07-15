@@ -6,6 +6,9 @@ import { Observable } from 'rxjs';
 import { Doctor } from '../../model/doctor.interface';
 import { HttpLocalService } from '../../core/http-local.service';
 
+declare var $: any;
+declare var Materialize: any;
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -15,18 +18,22 @@ export class RegisterComponent implements OnInit {
 
   private doctor:Doctor;
   private doctorForm: FormGroup;
-  private specilities: any[] = [];
+  private specialties: any[] = [];
 
   constructor(
     private fs: FirebaseService,
     private lss: LocalStorageService,
   private httpLocal: HttpLocalService) {
 
+    this.doctor = { address: '', certificate: '', email: '', name: '', phone: '', photo: '', speciality: '', token: ''}
+
+
+
     this.doctorForm = new FormGroup({
       'name': new FormControl(null, [Validators.required]),
-      'phone': new FormControl(null, [Validators.required]),
+      'phone': new FormControl(null, [Validators.required, Validators.pattern('^\d{10}$')]),
       'email': new FormControl(null, [Validators.required, Validators.email]),
-      'speciality': new FormControl(null, [Validators.required]),
+      'specialty': new FormControl(null, [Validators.required]),
       'certificate': new FormControl(null, [Validators.required]),
       'address': new FormControl(null, [Validators.required])
 
@@ -42,19 +49,26 @@ export class RegisterComponent implements OnInit {
       this.doctor = data.length ? data[0] : null;
 
           this.doctorForm.controls['email'].setValue(user.email);
+          this.doctorForm.controls['email'].disable();
+
           this.doctorForm.controls['name'].setValue(user.displayName);
-          Materialize.updateTextFields()
+          Materialize.updateTextFields();
     });
 
-    this.httpLocal.get('specilities.json')
+    this.httpLocal.get('specialties.json')
     .subscribe((data:any)=>{
-      this.specilities = data.specilities;
+      this.specialties = data.specialties;
     });
 
   }
 
   sendForm(){
-    console.log(this.doctorForm);
+    console.log(this.doctorForm.value);
+  }
+
+  change(event){
+    // console.log(event.target.value)
+    this.doctorForm.controls['specialty'].setValue(event.target.value);
   }
 
 }
