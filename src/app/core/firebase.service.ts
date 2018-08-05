@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFireStorage, AngularFireStorageReference } from 'angularfire2/storage';
 import { Observable } from 'rxjs';
 import { Doctor } from '../model/doctor.interface';
 
@@ -9,7 +10,8 @@ import { Doctor } from '../model/doctor.interface';
 })
 export class FirebaseService {
 
-  constructor(private db: AngularFirestore) {
+  constructor(private db: AngularFirestore,
+              private dbs: AngularFireStorage) {
   }
 
   public getDoctors(){
@@ -17,7 +19,7 @@ export class FirebaseService {
   }
 
   public postDoctor(doctor:Doctor){
-    this.db.collection('doctors').add(doctor);
+    return this.db.collection('doctors').add(doctor);
   }
 
   public getPremiumDoctors(){
@@ -43,6 +45,11 @@ export class FirebaseService {
 
   public geFreemiumDoctorsBySpeciality(specility:string){
 
+  }
+
+  public uploadPhoto(photo: File, user:string){
+    const ref:AngularFireStorageReference = this.dbs.ref(user);
+    return ref.put(photo);
   }
 
 }

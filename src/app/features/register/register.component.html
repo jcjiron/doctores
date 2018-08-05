@@ -5,7 +5,7 @@
     <div class="row">
       <div class="col s4 offset-s4">
         <input (change)="loadPhoto($event?.target.files[0])" class="photo-filed" type="file" name="field" value="" #photoField>
-        <img *ngIf="!photoTemp" (click)="photoField.click()" [src]="photo" alt="" class="circle responsive-img"> 
+        <img *ngIf="!photoTemp" (click)="photoField.click()" [src]="photo" alt="" class="circle responsive-img">
         <img *ngIf="photoTemp" (click)="photoField.click()" [src]="photoTemp" alt="" class="circle responsive-img">
       </div>
     </div>
@@ -48,7 +48,7 @@
       <div class="input-field col s6">
         <select  (change)="changeSelect($event)" formControlName="specialty" name="specialty" id="specialty" name="specialty" materialize="material_select" [materializeSelectOptions]="specialties">
           <option disabled>Escoge una</option>
-          <option *ngFor="let specialty of specialties" [value]="specialty" >{{specialty}}</option>
+          <option *ngFor="let specialty of specialties" [value]="specialty.value" >{{specialty.specialty}}</option>
         </select>
         <label for="specialty">Especialidad</label>
       </div>

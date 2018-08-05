@@ -5,6 +5,7 @@ import { LocalStorageService } from '../../shared/services/local-storage.service
 import { Observable } from 'rxjs';
 import { Doctor } from '../../model/doctor.interface';
 import { HttpLocalService } from '../../core/http-local.service';
+import * as imgUtils from '../../shared/utils/files.utils';
 
 import * as Pattern from '../../shared/utils/app.patterns';
 
@@ -26,7 +27,7 @@ export class RegisterComponent implements OnInit {
   private photoUpload:File;
 
   constructor(
-    private fs: FirebaseService,
+    private db: FirebaseService,
     private lss: LocalStorageService,
     private httpLocal: HttpLocalService) {
 
@@ -49,7 +50,7 @@ export class RegisterComponent implements OnInit {
 
       const user = this.lss.getItem('user') ? JSON.parse(this.lss.getItem('user')) : null;
 
-      this.fs.getDoctorByEmail(user.email)
+      this.db.getDoctorByEmail(user.email)
       .subscribe((data:any[])=>{
         this.doctor = data.length ? data[0] : null;
 
@@ -61,9 +62,13 @@ export class RegisterComponent implements OnInit {
       this.doctorForm.controls['email'].setValue(user.email);
       this.doctorForm.controls['email'].disable();
       this.doctorForm.controls['name'].setValue(user.displayName);
-      // console.log(user)
+      console.log(user)
       this.photo = user.photoURL;
       Materialize.updateTextFields();
+
+
+      imgUtils.getFileObject(this.photo, (fileObject)=> this.photoUpload = fileObject);
+
     }
   });
 
@@ -78,7 +83,6 @@ loadPhoto(file:File){
     if (file.type.indexOf('image') >= 0) {
 
       this.photoUpload = file;
-
       let reader = new FileReader();
       let urlPhotoTemp = reader.readAsDataURL( file );
 
@@ -88,7 +92,29 @@ loadPhoto(file:File){
 }
 
 sendForm(){
-  console.log(this.doctorForm);
+  // console.log(this.doctorForm.getRawValue());
+  this.doctor = this.doctorForm.getRawValue();
+  // console.log( this.doctor );
+
+  this.db.uploadPhoto(this.photoUpload, this.doctor.email)
+  .then((data)=>{
+    // console.log(data);
+    this.doctor.photo = data.ref.fullPath;
+
+    this.db.postDoctor(this.doctor)
+    .then((data)=>{
+      console.log(data)
+    })
+    .catch((error)=>{
+      console.log(error);
+    });
+  })
+  .catch((error)=>{
+    console.log(error);
+  });
+
+
+
 }
 
 changeSelect(event){
