@@ -6,3 +6,11 @@ $roboto-font-path: "~materialize-css/dist/fonts/roboto/";
   background: white;
   color: $primary-color;
 }
+
+.error-message{
+  color: $error-color;
+}
+
+.photo-filed{
+  display: none;
+}

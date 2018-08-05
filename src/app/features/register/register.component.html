@@ -3,33 +3,52 @@
 <div class="row">
   <form materialize [formGroup]="doctorForm" class="col s6 offset-s3">
     <div class="row">
+      <div class="col s4 offset-s4">
+        <input (change)="loadPhoto($event?.target.files[0])" class="photo-filed" type="file" name="field" value="" #photoField>
+        <img *ngIf="!photoTemp" (click)="photoField.click()" [src]="photo" alt="" class="circle responsive-img">
+        <img *ngIf="photoTemp" (click)="photoField.click()" [src]="photoTemp" alt="" class="circle responsive-img">
+      </div>
+    </div>
+    <div class="row">
       <div class="input-field col s12">
-        <input  formControlName="name" name="name" id="name" type="text" >
-        <!-- <small class="form-text text-muted danger"
-               *ngIf="!userForm.get('email').valid && (userForm.get('email').dirty || userForm.get('email').touched)">
-          {{ 'v_email_format' | translate }}
-        </small> -->
+        <input formControlName="name" name="name" id="name" type="text" >
         <label for="name" >Nombre completo</label>
+        <span class="helper-text error-message"
+              *ngIf="doctorForm.get('name').invalid && (doctorForm.get('name').dirty || doctorForm.get('name').touched)">
+          nombre inválido
+        </span>
       </div>
       <div class="input-field col s6">
         <input  formControlName="email" id="email" name="email" type="email" >
         <label for="email" >Correo</label>
+        <span class="helper-text error-message"
+              *ngIf="doctorForm.get('email').invalid && (doctorForm.get('email').dirty || doctorForm.get('email').touched)">
+          correo inválido
+        </span>
 
       </div>
       <div class="input-field col s6">
         <input  formControlName="phone" name="phone"  id="phone" type="number" >
         <label for="phone">Teléfono (10 dígitos)</label>
+        <span class="helper-text error-message"
+              *ngIf="doctorForm.get('phone').invalid && (doctorForm.get('phone').dirty || doctorForm.get('phone').touched)">
+          teléfono inválido
+        </span>
       </div>
     </div>
     <div class="row">
       <div class="input-field col s6">
-        <input  formControlName="certificate" name="certificate" id="certificate" type="text" >
+        <input  formControlName="certificate" name="certificate" id="certificate" type="number" >
         <label for="certificate">Cédula</label>
+        <span class="helper-text error-message"
+              *ngIf="doctorForm.get('certificate').invalid && (doctorForm.get('certificate').dirty || doctorForm.get('certificate').touched)">
+          cédula inválida
+        </span>
       </div>
       <div class="input-field col s6">
-        <select  (change)="change($event)" formControlName="specialty" name="specialty" id="specialty" name="specialty" materialize="material_select" [materializeSelectOptions]="specialties">
+        <select  (change)="changeSelect($event)" formControlName="specialty" name="specialty" id="specialty" name="specialty" materialize="material_select" [materializeSelectOptions]="specialties">
           <option disabled>Escoge una</option>
-          <option *ngFor="let specialty of specialties" [value]="specialty" >{{specialty}}</option>
+          <option *ngFor="let specialty of specialties" [value]="specialty.value" >{{specialty.specialty}}</option>
         </select>
         <label for="specialty">Especialidad</label>
       </div>
@@ -38,11 +57,16 @@
       <div class="input-field col s12">
         <input formControlName="address" name="address" id="address" type="text" >
         <label for="address">Dirección</label>
+        <span class="helper-text error-message"
+              *ngIf="doctorForm.get('address').invalid && (doctorForm.get('address').dirty || doctorForm.get('address').touched)">
+          dirección inválida
+        </span>
       </div>
 
     </div>
     <div class="row">
       <button (click)="sendForm()" class="waves-effect waves-light btn col s6 offset-s3" [disabled]="doctorForm.invalid">Completar registro</button>
+      <!-- <button (click)="sendForm()" class="waves-effect waves-light btn col s6 offset-s3">Completar registro</button> -->
     </div>
   </form>
 </div>

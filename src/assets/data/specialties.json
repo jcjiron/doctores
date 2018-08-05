@@ -1,37 +1,136 @@
 {
-"specialties":[
-  "Alergología",
-"Anestesiología y reanimación",
-"Cardiología",
-"Gastroenterología",
-"Endocrinología",
-"Geriatría",
-"Ginecología",
-"Hematología y hemoterapia",
-"Infectología",
-"Medicina aeroespacial",
-"Medicina del deporte",
-"Medicina del trabajo",
-"Medicina de urgencias",
-"Medicina familiar y comunitaria",
-"Medicina física y rehabilitación",
-"Medicina intensiva",
-"Medicina interna",
-"Medicina legal y forense",
-"Medicina preventiva y salud pública",
-"Medicina veterinaria",
-"Nefrología",
-"Neumología",
-"Neurología",
-"Nutriología",
-"Oftalmología",
-"Oncología médica",
-"Oncología radioterápica",
-"Pediatría",
-"Psiquiatría",
-"Rehabilitación",
-"Reumatología",
-"Toxicología",
-"Urología"
-]
+  "specialties": [
+    {
+      "specialty": "Alergología",
+      "value": 1
+    },
+    {
+      "specialty": "Anestesiología y reanimación",
+      "value": 2
+    },
+    {
+      "specialty": "Cardiología",
+      "value": 3
+    },
+    {
+      "specialty": "Gastroenterología",
+      "value": 4
+    },
+    {
+      "specialty": "Endocrinología",
+      "value": 5
+    },
+    {
+      "specialty": "Geriatría",
+      "value": 6
+    },
+    {
+      "specialty": "Ginecología",
+      "value": 7
+    },
+    {
+      "specialty": "Hematología y hemoterapia",
+      "value": 8
+    },
+    {
+      "specialty": "Infectología",
+      "value": 9
+    },
+    {
+      "specialty": "Medicina aeroespacial",
+      "value": 10
+    },
+    {
+      "specialty": "Medicina del deporte",
+      "value": 11
+    },
+    {
+      "specialty": "Medicina del trabajo",
+      "value": 12
+    },
+    {
+      "specialty": "Medicina de urgencias",
+      "value": 13
+    },
+    {
+      "specialty": "Medicina familiar y comunitaria",
+      "value": 14
+    },
+    {
+      "specialty": "Medicina física y rehabilitación",
+      "value": 15
+    },
+    {
+      "specialty": "Medicina intensiva",
+      "value": 16
+    },
+    {
+      "specialty": "Medicina interna",
+      "value": 17
+    },
+    {
+      "specialty": "Medicina legal y forense",
+      "value": 18
+    },
+    {
+      "specialty": "Medicina preventiva y salud pública",
+      "value": 19
+    },
+    {
+      "specialty": "Medicina veterinaria",
+      "value": 20
+    },
+    {
+      "specialty": "Nefrología",
+      "value": 21
+    },
+    {
+      "specialty": "Neumología",
+      "value": 22
+    },
+    {
+      "specialty": "Neurología",
+      "value": 23
+    },
+    {
+      "specialty": "Nutriología",
+      "value": 24
+    },
+    {
+      "specialty": "Oftalmología",
+      "value": 25
+    },
+    {
+      "specialty": "Oncología médica",
+      "value": 26
+    },
+    {
+      "specialty": "Oncología radioterápica",
+      "value": 27
+    },
+    {
+      "specialty": "Pediatría",
+      "value": 28
+    },
+    {
+      "specialty": "Psiquiatría",
+      "value": 29
+    },
+    {
+      "specialty": "Rehabilitación",
+      "value": 30
+    },
+    {
+      "specialty": "Reumatología",
+      "value": 31
+    },
+    {
+      "specialty": "Toxicología",
+      "value": 32
+    },
+    {
+      "specialty": "Urología",
+      "value": 33
+    }
+  ]
 }
